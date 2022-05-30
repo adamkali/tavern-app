@@ -4,23 +4,23 @@ import { Card, Button } from '@rneui/themed';
 
 import { UserService } from '../helpers/services';
 import * as TavernModels from '../helpers/models';
-
+import UserCard from './components/card';
 import { PaperPen, DarkHorizon } from '../components/colorthemes';
 import { RootTabScreenProps } from '../types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-    const [user, setUser] = useState({} as TavernModels.User);
     const [errorMessage, setErrorMessage] = useState('');
-    const [tags, setTags] = useState([] as string[]);
     const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
+    const renderCard = (): JSX.Element => {
+	let user: TavernModels.User;
         UserService.getUserByID({
-            userId: '003602aad07868e0b19e19351cdb7e59',
+            userId: '0be2f1e14132bf99fe7e27dbdbe02aaf',
         }).then(
             (res) => {
                 if (res.successful && res.data) {
-                    setUser(res.data);
+		    console.log(res.data);
+		    user = res.data;
                 } else {
                     setErrorMessage(res.message);
                 }
@@ -28,40 +28,20 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
             (err) => setErrorMessage(`${err}`)
         ).then(
             (_) => {
-                if ( user.tags !== undefined ) {
-                    setTags(user.tags.split(', '));
-                    setLoaded(true);
-                }
+	    	setLoaded(true);
             }
         ).catch(
             (reason) => {
                 console.warn(reason);
             }
         )
-    }, []);
-    
+	return <UserCard user={user} loaded={true} />
+    }
 
     return (
         <DefaultView style={ styles.styleContainer }>
-            <Text style={styles.title}>This is my thingd</Text>
-            <Card containerStyle={ styles.cardContainer }>
-                { loaded ?
-                    <DefaultView>
-                        <Card.Title>{user.username}</Card.Title>
-                        <Card.Divider>
-                            <Scroll>
-                                <Text style={ styles.text }>{user.bio}</Text>
-                                <DefaultView style={ styles.separator} />
-                                <Text style={ styles.text }>Tags:</Text>
-                                { tags.map((tag) => {
-                                    return <Text style={ styles.text }>{tag}</Text>
-                                })}
-                            </Scroll>
-                        </Card.Divider>
-                    </DefaultView>
-                    : <Text style={ styles.text }>{errorMessage}</Text>
-                }
-            </Card>
+            <Text style={styles.title}>Tavern</Text>
+	    { renderCard }
         </DefaultView>
     );
 }
@@ -99,6 +79,6 @@ const styles = StyleSheet.create({
     separator: {
         marginVertical: 30,
         height: 1,
-        width: '80%', 
+        width: '80%',
     },
 });
