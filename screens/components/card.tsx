@@ -4,6 +4,7 @@ import { Card, Button } from '@rneui/themed';
 
 import * as TavernModels from "../../helpers/models";
 import { DarkHorizon } from '../../components/colorthemes';
+import CharacterDetails from './characterInfo';
 
 export default function UserCard({
 	user,
@@ -12,25 +13,31 @@ export default function UserCard({
 	user: TavernModels.User,
 	loaded: boolean,
 }): JSX.Element {
-	const [ cardUser, setCardUser ] = useState(user);
-	const tags = user.tags.split(', ');
+	const entity: TavernModels.User = user;
 	return (
 		<DefaultView>
-		    { loaded ? <Card containerStyle={ styles.cardContainer }>
-			    <DefaultView>
-				<Card.Title>{user.username}</Card.Title>
+			{ user.id !== (null || undefined) ?
+			<Card containerStyle={ styles.cardContainer }>
+				<Card.Title style={styles.title}>{entity.username}</Card.Title>
 				<Card.Divider>
-				    <Scroll>
-					<Text style={ styles.text }>{cardUser.bio}</Text>
-					<DefaultView style={ styles.separator} />
+				<DefaultView style={ styles.separator} />
+			    	<Scroll>
+					<Text style={ styles.text }>{entity.bio}</Text>
 					<Text style={ styles.text }>Tags:</Text>
-					{ tags.map((tag) => {
+					{ entity.tags.split(', ').map((tag) => {
 					    return <Text style={ styles.text }>{tag}</Text>
 					})}
-				    </Scroll>
+					<Text style={ styles.text }>{entity.player_preference}</Text>
+				</Scroll>
+				<DefaultView style={ styles.separator} />
+				<Text style={ styles.title }>Characters</Text>
+				<Scroll>
+					{entity.user_characters.map((character) => {
+						return (<CharacterDetails character={character} />);
+					})}
+				</Scroll>
 				</Card.Divider>
-			    </DefaultView>
-		    </Card> : <Text>Hi</Text>}
+		    </Card> : <Text>Uh oh something happened...</Text>}
 		</DefaultView>
 	)
 }
@@ -42,7 +49,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: DarkHorizon.colors.card,
         color: DarkHorizon.colors.text,
-	borderRadius: 10,
+	borderRadius: 12,
+	height: 100,
+	width: 250,
     },
     text: {
         fontSize: 12,
@@ -53,5 +62,10 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         height: 1,
         width: '80%',
+    },
+    title: {
+        fontSize: 18,
+        color: DarkHorizon.colors.text,
+        marginVertical: 10,
     },
 });

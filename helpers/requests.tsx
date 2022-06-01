@@ -7,7 +7,7 @@ export async function  getAllUsers(): Promise<TavernModels.UsersDetailedResponse
     }
     const response = await fetch(TavernEndpoint + 'users', { headers: headers});
     return response.json();
-}; 
+};
 
 export async function postAUser(params: {
     body: TavernModels.User,
@@ -20,7 +20,7 @@ export async function postAUser(params: {
         }
 
         fetch(
-            url, { 
+            url, {
                 headers: headers,
                 body: JSON.stringify(params.body),
                 method: 'POST',
@@ -39,30 +39,24 @@ export async function postAUser(params: {
 export async function getUserByID(params: {
     userId: string,
 } = {} as any): Promise<TavernModels.UserDetailedResponse> {
-    return new Promise((resolve, reject) => {
-        const url: string = TavernEndpoint + 'users/' + params.userId;
-        const headers = {
-            'Accept': 'application/json',
-        }
+        return new Promise((resolve, reject) => {
+		const url: string = TavernEndpoint + 'users/' + params.userId;
+		const headers = {
+		        'Accept': '*/*',
+		}
 
-        fetch(
-            url, { 
-                headers: headers,
-                method: 'GET',
-            }
-        ).then(
-            (res) => {
-                resolve(new TavernModels.UserDetailedResponse(res.json()));
-            },
-            (err) => {
-                reject(err);
-            }
-        ).catch(
-            (reason) => {
-                reject(console.warn(reason))
-            }
-        )
-    });
+		fetch( url, { headers: headers, method: 'GET'}).then(
+			(res) => res.json(),
+			(err) => reject(err)
+		).then(
+			(jsonData) => {
+				console.log(jsonData as TavernModels.UserDetailedResponse);
+				resolve(jsonData as TavernModels.UserDetailedResponse);
+			},
+		).catch(
+			(err) => reject(err)
+		)
+	})
 };
 
 export async function updateUser(params: {
@@ -77,7 +71,7 @@ export async function updateUser(params: {
         }
 
         fetch(
-            url, { 
+            url, {
                 headers: headers,
                 body: JSON.stringify(params.body),
                 method: 'POST',

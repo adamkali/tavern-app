@@ -9,39 +9,39 @@ import { PaperPen, DarkHorizon } from '../components/colorthemes';
 import { RootTabScreenProps } from '../types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+    const [user, setUser] = useState({} as TavernModels.User);
     const [errorMessage, setErrorMessage] = useState('');
     const [loaded, setLoaded] = useState(false);
 
-    const renderCard = (): JSX.Element => {
-	let user: TavernModels.User;
-        UserService.getUserByID({
-            userId: '0be2f1e14132bf99fe7e27dbdbe02aaf',
-        }).then(
-            (res) => {
-                if (res.successful && res.data) {
-		    console.log(res.data);
-		    user = res.data;
-                } else {
-                    setErrorMessage(res.message);
-                }
-            },
-            (err) => setErrorMessage(`${err}`)
-        ).then(
-            (_) => {
-	    	setLoaded(true);
-            }
-        ).catch(
-            (reason) => {
-                console.warn(reason);
-            }
-        )
-	return <UserCard user={user} loaded={true} />
-    }
+	useEffect(() => {
+		UserService.getUserByID({
+			userId: '0be2f1e14132bf99fe7e27dbdbe02aaf',
+		}).then(
+			(res) => {
+				if (res.successful && res.data) {
+					console.log(res.data);
+					setUser(res.data as TavernModels.User);
+				} else {
+					setErrorMessage(res.message);
+				}
+			},
+			(err) => setErrorMessage(`${err}`)
+		).then(
+			(_) => {
+				setLoaded(true);
+		    	}
+		).catch(
+		    	(reason) => {
+				console.warn(reason);
+		    	}
+		)
+	}, [])
 
     return (
         <DefaultView style={ styles.styleContainer }>
-            <Text style={styles.title}>Tavern</Text>
-	    { renderCard }
+                <Text style={styles.title}>Tavern</Text>
+		<UserCard user={user} loaded={loaded} />
+		<Text style={styles.text}>{errorMessage}</Text>
         </DefaultView>
     );
 }
