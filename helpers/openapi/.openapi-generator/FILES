@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+apis/CharactersApi.ts
+apis/PlotsApi.ts
+apis/UsersApi.ts
+apis/index.ts
+index.ts
+models/Character.ts
+models/CharacterDetailedResponse.ts
+models/CharactersDetailedResponse.ts
+models/Plot.ts
+models/PlotDetailedResponse.ts
+models/PlotsDetailedResponse.ts
+models/User.ts
+models/UserDetailedResponse.ts
+models/UsersDetailedResponse.ts
+models/index.ts
+runtime.ts

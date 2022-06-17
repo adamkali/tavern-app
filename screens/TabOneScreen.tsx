@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Text, View as DefaultView, ScrollView as Scroll,  StyleSheet } from 'react-native';
 import { Card, Button } from '@rneui/themed';
 
-import { UserService } from '../helpers/services';
+import TavernApi from '../helpers/services/ProfileService';
 import * as TavernModels from '../helpers/models';
 import UserCard from './components/card';
 import { PaperPen, DarkHorizon } from '../components/colorthemes';
@@ -14,7 +14,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
     const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
-		UserService.getUserByID({
+        TavernApi.UserService({
 			userId: '0be2f1e14132bf99fe7e27dbdbe02aaf',
 		}).then(
 			(res) => {
