@@ -1,2 +1,1 @@
-export const TavernEndpoint = "http://192.168.1.10:8000/api/";
-
+export const TavernEndpoint = 'http://localhost:8000/api/'
