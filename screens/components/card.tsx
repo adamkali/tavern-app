@@ -36,8 +36,8 @@ export default function UserCard({
                         {entity.username}
                     </Card.Title>
                     <Card.Divider>
-                        <DefaultView style={styles.separator} />
                         <Scroll>
+                            <DefaultView style={styles.separator} />
                             <Text style={styles.text}>{entity.bio}</Text>
                             <Text style={styles.text}>Tags:</Text>
                             {entity.tags.split(', ').map((tag) => {
@@ -46,10 +46,8 @@ export default function UserCard({
                             <Text style={styles.text}>
                                 {entity.player_prefernce}
                             </Text>
-                        </Scroll>
-                        <DefaultView style={styles.separator} />
-                        <Text style={styles.title}>Characters</Text>
-                        <Scroll>
+                            <DefaultView style={styles.separator} />
+                            <Text style={styles.title}>Characters</Text>
                             {
                                 // Make a loop to iterate through the characters array if the character array is not empty
                                 // If the character array is empty, do not display the characters section
@@ -70,6 +68,7 @@ export default function UserCard({
                                     </Text>
                                 )
                             }
+                            <Text style={styles.title}>Plots</Text>
                             {
                                 // Make a loop to iterate through the plots array if the plot array is not empty
                                 // If the plot array is empty, do not display the plots section

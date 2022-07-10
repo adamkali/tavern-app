@@ -14,6 +14,11 @@ export default class TavernProfileClient {
         this.baseUrl = TavernEndpoint;
     }
 
+    logData(obj: any) {
+        console.log(obj);
+        return obj;
+    }
+
     // Create a property that will be used for the baseUrl
     // This property will be set to the imported TavernEndpoint
     baseUrl: string;
@@ -42,7 +47,7 @@ export default class TavernProfileClient {
     // The method will connect to the 'users' endpoint
     getUsers(): Promise<TavernProfileModels.UsersDetailedResponse> {
         return fetch(this.baseUrl + 'users', { headers: this.headers })
-            .then(response => response.json())
+            .then(response => this.logData(response.json()))
     }
 
     /**
@@ -66,7 +71,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
 
@@ -85,7 +90,7 @@ export default class TavernProfileClient {
     // params will have a path parameter that will be a string that will be the userId
     public getUserById(params: any): Promise<TavernProfileModels.UserDetailedResponse> {
         return fetch(this.baseUrl + 'users/' + params.userId, { headers: this.headers })
-            .then(response => response.json())
+            .then(response => this.logData(response.json()))
     }
 
     /**
@@ -115,7 +120,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -136,7 +141,7 @@ export default class TavernProfileClient {
         return fetch(this.baseUrl + 'users/' + params.userId, {
             method: 'DELETE',
             headers: this.headers
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -154,7 +159,7 @@ export default class TavernProfileClient {
     // params will be a JSON object as {}
     getCharactersByUserId(params: any): Promise<TavernProfileModels.CharactersDetailedResponse> {
         return fetch(this.baseUrl + 'characters/' + params.userId + '/', { headers: this.headers })
-            .then(response => response.json())
+            .then(response => this.logData(response.json()))
     }
 
 
@@ -181,7 +186,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -199,7 +204,7 @@ export default class TavernProfileClient {
     // params will have a path parameter that will be a string that will be the characterId
     getCharacterById(params: any): Promise<TavernProfileModels.CharacterDetailedResponse> {
         return fetch(this.baseUrl + 'characters/' + params.characterId, { headers: this.headers })
-            .then(response => response.json())
+            .then(response => this.logData(response.json()))
     }
 
     /**
@@ -226,7 +231,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -246,7 +251,7 @@ export default class TavernProfileClient {
         return fetch(this.baseUrl + 'characters/' + params.characterId, {
             method: 'DELETE',
             headers: this.headers
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -300,7 +305,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /**
@@ -326,7 +331,7 @@ export default class TavernProfileClient {
         return fetch(this.baseUrl + 'plots/' + params.plotId, {
             method: 'GET',
             headers: this.headers
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /** 
@@ -360,7 +365,7 @@ export default class TavernProfileClient {
                 'Content-Type': 'application/json',
                 ...this.headers
             }
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 
     /** 
@@ -384,6 +389,6 @@ export default class TavernProfileClient {
         return fetch(this.baseUrl + 'plots/' + params.plotId, {
             method: 'DELETE',
             headers: this.headers
-        }).then(response => response.json())
+        }).then(response => this.logData(response.json()))
     }
 }
