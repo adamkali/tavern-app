@@ -17,8 +17,16 @@ export enum UserPlayerPreferences {
     DungeonMaster = "Dungeon Master",
     Player = "Player",
     Both = "Both",
-    Both_DM_Preferred = "Both (DM preferred)",
-    Both_Player_Preferred = "Both (Player preferred)"
+    Both_DM_Preferred = "Both (Dungeon Master Prefered)",
+    Both_Player_Preferred = "Both (Player Prefered)"
+}
+
+export enum UserRelationship {
+    UserLike = "Like",
+    UserDislike = "Dislike",
+    UserMatch = "Match",
+    UserLove = "Love",
+    UserBlocked = "Blocked",
 }
 
 /**
