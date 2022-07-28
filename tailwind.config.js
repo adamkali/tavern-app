@@ -1,20 +1,20 @@
 module.exports = {
-  content: ['./App.tsx', './components/**/*.{ts,tsx} ', './assets/**/*.jpg'],
+  content: [ './App.tsx', './components/**/*.tsx' ],
   theme: {
     extend: {
-      height: {
-        '128': '32rem',
-        '256': '64rem',
-      },
       borderRadius: {
         'xl': '1.5rem',
-        '2xl': '2.5rem',
-        '3xl': '3.5rem',
+        '2xl': '2rem',
+        '3xl': '3rem',
+        '4xl': '4rem',
+        // make a rounded border for the header that
+        // is rounded on the bottom only with a radius of 1.5rem
+        'header': '1.5rem 1.5rem 0 0',
       },
-      backgroundImage: {
-        'wood-pattern': 'url("./assets/background.jpg")',
-        'scroll': 'url("./assets/scroll.png")',
-      },
+      height: {
+        '12': '3rem',
+        'header': '12.5%',
+      }
     },
   },
   plugins: [],

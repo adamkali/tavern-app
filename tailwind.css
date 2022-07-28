@@ -1,9 +1,43 @@
+.absolute {
+  position: absolute
+}
+
 .relative {
   position: relative
 }
 
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px
+}
+
+.inset-x-0 {
+  left: 0px;
+  right: 0px
+}
+
+.left-0 {
+  left: 0px
+}
+
+.right-0 {
+  right: 0px
+}
+
+.bottom-0 {
+  bottom: 0px
+}
+
 .z-10 {
   z-index: 10
+}
+
+.m-6 {
+  margin: 1.5rem
+}
+
+.m-2 {
+  margin: 0.5rem
 }
 
 .mx-auto {
@@ -11,34 +45,58 @@
   margin-right: auto
 }
 
-.my-24 {
-  margin-top: 6rem;
-  margin-bottom: 6rem
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto
 }
 
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem
+}
+
+.ml-2 {
+  margin-left: 0.5rem
+}
+
+.mr-2 {
+  margin-right: 0.5rem
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem
 }
 
 .flex {
   display: flex
 }
 
+.hidden {
+  display: none
+}
+
 .h-full {
   height: 100%
 }
 
-.h-24 {
-  height: 6rem
+.h-header {
+  height: 12.5%
 }
 
-.h-128 {
-  height: 32rem
+.h-10 {
+  height: 2.5rem
+}
+
+.h-4\/5 {
+  height: 80%
 }
 
 .w-full {
   width: 100%
+}
+
+.w-10 {
+  width: 2.5rem
 }
 
 .w-80 {
@@ -47,6 +105,10 @@
 
 .flex-row {
   flex-direction: row
+}
+
+.flex-col {
+  flex-direction: column
 }
 
 .items-center {
@@ -61,36 +123,29 @@
   justify-content: space-between
 }
 
-.rounded-2xl {
-  border-radius: 2.5rem
+.justify-around {
+  justify-content: space-around
 }
 
-.rounded-xl {
-  border-radius: 1.5rem
+.justify-evenly {
+  justify-content: space-evenly
+}
+
+.rounded-header {
+  border-radius: 1.5rem 1.5rem 0 0
 }
 
 .rounded-full {
   border-radius: 9999px
 }
 
-.bg-slate-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity))
+.rounded-xl {
+  border-radius: 1.5rem
 }
 
-.bg-yellow-200 {
+.bg-slate-400 {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity))
-}
-
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
-}
-
-.bg-blue-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(191 219 254 / var(--tw-bg-opacity))
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity))
 }
 
 .bg-slate-200 {
@@ -98,21 +153,30 @@
   background-color: rgb(226 232 240 / var(--tw-bg-opacity))
 }
 
-.p-10 {
-  padding: 2.5rem
+.bg-yellow-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 240 138 / var(--tw-bg-opacity))
 }
 
 .p-5 {
   padding: 1.25rem
 }
 
-.p-4 {
-  padding: 1rem
+.p-6 {
+  padding: 1.5rem
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.pt-6 {
+  padding-top: 1.5rem
+}
+
+.text-center {
+  text-align: center
 }
 
 .text-xl {
@@ -120,7 +184,31 @@
   line-height: 1.75rem
 }
 
-.text-slate-600 {
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.font-bold {
+  font-weight: 700
+}
+
+.text-gray-500 {
   --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity))
+  color: rgb(107 114 128 / var(--tw-text-opacity))
+}
+
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity))
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity))
 }
