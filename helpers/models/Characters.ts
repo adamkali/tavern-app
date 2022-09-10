@@ -1,7 +1,7 @@
 // Implement the characters model
 // This class should be able to be built from a JSON object
 export class Character {
-    id: number;
+    id: string;
     character_name: string;
     back_story: string;
     bio: string;
@@ -14,7 +14,6 @@ export class Character {
     character_class: string;
     character_level: number;
     character_traits: string;
-    character_race: string;
     character_hit_points: string;
     user_id: string;
 
@@ -33,7 +32,6 @@ export class Character {
         this.character_class = data.character_class;
         this.character_level = data.character_level;
         this.character_traits = data.character_traits;
-        this.character_race = data.character_race;
         this.character_hit_points = data.character_hit_points;
         this.user_id = data.user_id;
     }

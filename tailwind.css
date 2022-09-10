@@ -6,14 +6,13 @@
   position: relative
 }
 
-.inset-y-0 {
-  top: 0px;
-  bottom: 0px
-}
-
 .inset-x-0 {
   left: 0px;
   right: 0px
+}
+
+.bottom-0 {
+  bottom: 0px
 }
 
 .left-0 {
@@ -24,20 +23,8 @@
   right: 0px
 }
 
-.bottom-0 {
-  bottom: 0px
-}
-
 .z-10 {
   z-index: 10
-}
-
-.m-6 {
-  margin: 1.5rem
-}
-
-.m-2 {
-  margin: 0.5rem
 }
 
 .mx-auto {
@@ -50,9 +37,8 @@
   margin-bottom: auto
 }
 
-.mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem
+.mb-2 {
+  margin-bottom: 0.5rem
 }
 
 .ml-2 {
@@ -63,16 +49,8 @@
   margin-right: 0.5rem
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem
-}
-
 .flex {
   display: flex
-}
-
-.hidden {
-  display: none
 }
 
 .h-full {
@@ -119,20 +97,12 @@
   justify-content: center
 }
 
-.justify-between {
-  justify-content: space-between
-}
-
-.justify-around {
-  justify-content: space-around
-}
-
-.justify-evenly {
-  justify-content: space-evenly
-}
-
 .rounded-header {
   border-radius: 1.5rem 1.5rem 0 0
+}
+
+.rounded-2xl {
+  border-radius: 2rem
 }
 
 .rounded-full {
@@ -162,10 +132,6 @@
   padding: 1.25rem
 }
 
-.p-6 {
-  padding: 1.5rem
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem
@@ -175,18 +141,14 @@
   padding-top: 1.5rem
 }
 
-.text-center {
-  text-align: center
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem
 }
 
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem
 }
 
 .text-lg {
@@ -198,17 +160,17 @@
   font-weight: 700
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity))
+}
+
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity))
 }
 
-.text-red-400 {
+.text-slate-600 {
   --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity))
-}
-
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity))
+  color: rgb(71 85 105 / var(--tw-text-opacity))
 }
