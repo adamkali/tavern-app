@@ -18,7 +18,7 @@ export class Tag {
 // It will have a property called data that is a Tag object
 // It will have a property called successful that is a boolean
 // It will have a property called message that is a string
-export class TagDetailedResponse {
+export class TagsDetailedResponse {
     data: Tag[];
     successful: boolean;
     message: string;

@@ -1,4 +1,5 @@
 import * as TavernProfileModels from '../models/index';
+import * as TavernAuthorization from './Authenticate';
 import { TavernEndpoint } from '../endpoints';
 
 // Create a class that will be used for an API Client
@@ -97,7 +98,7 @@ export default class TavernProfileClient {
      * updateUserByUserId(params: any): Promise<TavernProfileModels.UserDetailedResponse>
      * @example updateUserByUserId(
      *              {
-     *                  userId: '00000000-0000-0000-0000-0000000000000', 
+     *                  userId: '00000000-0000-0000-0000-0000000000000',
      *                  body: new User(),
      *              });
      * @param params JSON object that will store the userId and the User object
@@ -163,7 +164,7 @@ export default class TavernProfileClient {
     }
 
 
-    /** 
+    /**
      * postCharacterByUserId(params: any): Promise<TavernProfileModels.CharacterDetailedResponse>
      * @example postCharacterByUserId({userId: '00000000-0000-0000-0000-000000000000', body: new Character()});
      * @param params JSON object that will be used to post a new Character to the API
@@ -191,7 +192,7 @@ export default class TavernProfileClient {
 
     /**
      * getCharacterById(params: any): Promise<TavernProfileModels.CharacterDetailedResponse>
-     * @example getCharacterById({characterId: '00000000-0000-0000-0000-000000000000'}) 
+     * @example getCharacterById({characterId: '00000000-0000-0000-0000-000000000000'})
      * @param params JSON object that will be used to get a character by characterId
      * @returns A Promise that will resolve to a CharacterDetailedResponse
      */
@@ -334,7 +335,7 @@ export default class TavernProfileClient {
         }).then(response => this.logData(response.json()))
     }
 
-    /** 
+    /**
      * updatePlotById(params: any): Promise<TavernProfileModels.PlotDetailedResponse>
      * @example updatePlotById({plotId: '00000000-0000-0000-0000-000000000000', body: new Plot()})
      * @param params JSON object that will be used to update a plot by id
@@ -368,7 +369,7 @@ export default class TavernProfileClient {
         }).then(response => this.logData(response.json()))
     }
 
-    /** 
+    /**
      * deletePlotById(params: any): Promise<TavernProfileModels.PlotDetailedResponse>
      * @example deletePlotById({plotId: '00000000-0000-0000-0000-000000000000'})
      * @param params JSON object that will be used to delete a plot by id
@@ -390,5 +391,187 @@ export default class TavernProfileClient {
             method: 'DELETE',
             headers: this.headers
         }).then(response => this.logData(response.json()))
+    }
+
+    /**
+     * login(params: any): Promise<TavernProfileModels.TokenDetailedResponse>
+     * @example login({body: new TavernProfileModels.LoginRequest()})
+     * @param params JSON object that will be used to login
+     * @returns A Promise that will resolve to a TokenDetailedResponse
+     * @throws Will throw an error if the body is not provided
+    */
+   // Create a method that will login a user
+   // This method will use fetch to make a POST request to the baseUrl
+   // The method will return a Promise that will resolve to a TokenDetailedResponse
+   // This will take a parameter called params that will be a JSON object as {}
+   // params will contain a parameter called body that will be a LoginRequest object that will be used to login a user
+   // The method will connect to the 'login' endpoint
+   // params will have a body parameter that will be a LoginRequest object
+    login(params: any): Promise<TavernProfileModels.TokenDetailedResponse> {
+	if (!params.body) {
+	    throw new Error('body is required');
+	}
+	return fetch(this.baseUrl + 'login', {
+	    method: 'POST',
+	    body: JSON.stringify(params.body),
+	    headers: {
+		'Content-Type': 'application/json',
+		...this.headers
+	    }
+	}).then(response => this.logData(response.json()))
+    }
+
+    /**
+      * register(params: any): Promise<TavernProfileModels.TokenDetailedResponse>
+      * @example register({body: new TavernProfileModels.AuthRequest()})
+      * @param params JSON object that will be used to register
+      * @returns A Promise that will resolve to a TokenDetailedResponse
+      * @throws Will throw an error if the body is not provided
+    */
+    // Create a method that will register a user
+    // This method will use fetch to make a POST request to the baseUrl
+    // The method will return a Promise that will resolve to a TokenDetailedResponse
+    // This will take a parameter called params that will be a JSON object as {}
+    // params will contain a parameter called body that will be a AuthRequest object that will be used to register a user
+    // The method will connect to the 'register' endpoint
+    // params will have a body parameter that will be a AuthRequest object
+    register(params: any): Promise<TavernProfileModels.TokenDetailedResponse> {
+	if (!params.body) {
+	    throw new Error('body is required');
+	}
+	return fetch(this.baseUrl + 'register', {
+	    method: 'POST',
+	    body: JSON.stringify(params.body),
+	    headers: {
+		'Content-Type': 'application/json',
+		...this.headers
+	    }
+	}).then(response => this.logData(response.json()))
+    }
+
+    /**
+      * activate(params: any): Promise<TavernProfileModels.TokenDetailedResponse>
+      @ example activate({code: '0000aaaa'})
+      * @param params JSON object that will be used to activate a user
+      * @returns A Promise that will resolve to a TokenDetailedResponse
+      * @throws Will throw an error if the code is not provided
+    */
+    // Create a method that will activate a user
+    // This method will use fetch to make a GET request to the baseUrl
+    // The method will return a Promise that will resolve to a TokenDetailedResponse
+    // This will take a parameter called params that will be a JSON object as {}
+    // params will contain a parameter called code that will be used to activate a user
+    // The method will connect to the 'activate/' endpoint
+    // params will have a path parameter that will be a string that will be the code
+    activate(params: any): Promise<TavernProfileModels.TokenDetailedResponse> {
+	if (!params.code) {
+	    throw new Error('code is required');
+	}
+	return fetch(this.baseUrl + 'activate/' + params.code, {
+	    method: 'GET',
+	    headers: this.headers
+	}).then(response => this.logData(response.json()))
+    }
+
+    /**
+      * getAuthUser(params: any): Promise<TavernProfileModels.UserDetailedResponse>
+      * @example getAuthUser({id: '00000000-0000-0000-0000-000000000000'})
+      * @param params JSON object that will be used to get the authenticated user
+      * @returns A Promise that will resolve to a UserDetailedResponse
+      * @throws Will throw an error if the id is not provided
+    */
+    // Create a method that will get the authenticated user
+    // This method will use fetch to make a GET request to the baseUrl
+    // The method will return a Promise that will resolve to a UserDetailedResponse
+    // This will take a parameter called params that will be a JSON object as {}
+    // params will contain a parameter called id that will be used to get the authenticated user
+    // The method will connect to the 'users/' endpoint
+    // params will have a path parameter that will be a string that will be the id
+    // the request will also have a header called Authorization that will be a string that will be the token
+    getAuthUser(params: any): Promise<TavernProfileModels.UserDetailedResponse> {
+	if (!params.id) {
+	    throw new Error('id is required');
+	}
+	let token: TavernProfileModels.AuthToken = new TavernProfileModels.AuthToken();
+	TavernAuthorization.isLoggedIn().then((result) => {
+	     token = result;
+	}, (error) => {
+	     throw new Error(error);
+	});
+	return fetch(this.baseUrl + 'auth/users/' + params.id, {
+	    method: 'GET',
+	    headers: {
+		...this.headers,
+		Authorization: 'Bearer ' + token.auth_hash ?? '',
+	    }
+	}).then(response => this.logData(response.json()))
+    }
+
+    /**
+      * updateAuthUser(params: any): Promise<TavernProfileModels.UserDetailedResponse>
+      * @example updateAuthUser({id: '00000000-0000-0000-0000-000000000000', body: new TavernProfileModels.User()})
+      * @param params JSON object that will be used to update the authenticated user
+      * @returns A Promise that will resolve to a UserDetailedResponse
+      * @throws Will throw an error if the id or body is not provided
+    */
+    // Create a method that will update the authenticated user
+    // This method will use fetch to make a PUT request to the baseUrl
+    // The method will return a Promise that will resolve to a UserDetailedResponse
+    // This will take a parameter called params that will be a JSON object as {}
+    // params will contain a parameter called id that will be used to update the authenticated user
+    // params will contain a parameter called body that will be a User object that will be used to update the authenticated user
+    // The method will connect to the 'auth/users/' endpoint
+    // params will have a path parameter that will be a string that will be the id
+    // params will have a body parameter that will be a User object
+    // the request will also have a header called Authorization that will be a string that will be the token
+    updateAuthUser(params: any): Promise<TavernProfileModels.UserDetailedResponse> {
+        if (!params.id) {
+	    throw new Error('id is required');
+	}
+	if (!params.body) {
+	    throw new Error('body is required');
+	}
+	let token: TavernProfileModels.AuthToken = new TavernProfileModels.AuthToken();
+	TavernAuthorization.isLoggedIn().then((result) => {
+	    token = result;
+	}, (error) => {
+ 	    throw new Error(error);
+	});
+	return fetch(this.baseUrl + 'auth/users/' + params.id, {
+	method: 'PUT',
+		body: JSON.stringify(params.body),
+		headers: {
+		    'Content-Type': 'application/json',
+		    ...this.headers,
+		    Authorization: 'Bearer ' + token.auth_hash ?? '',
+		},
+	}).then(response => this.logData(response.json()))
+    }
+
+    /**
+      * getAuthTags(): Promise<TavernProfileModels.TagsDetailedResponse>
+      * @example getAuthTags()
+      * @returns A Promise that will resolve to a TagsDetailedResponse
+    */
+    // Create a method that will get all viable tags
+    // This method will use fetch to make a GET request to the baseUrl
+    // The method will return a Promise that will resolve to a TagsDetailedResponse
+    // This will take no parameters
+    // The method will connect to the 'auth/enum/tags' endpoint
+    // the request will also have a header called Authorization that will be a string that will be the token
+    getAuthTags(): Promise<TavernProfileModels.TagsDetailedResponse> {
+	let token: TavernProfileModels.AuthToken = new TavernProfileModels.AuthToken();
+	TavernAuthorization.isLoggedIn().then((result) => {
+	    token = result;
+	}, (error) => {
+	    throw new Error(error);
+	});
+	return fetch(this.baseUrl + 'auth/enum/tags', {
+	    method: 'GET',
+	    headers: {
+		...this.headers,
+		Authorization: 'Bearer ' + token.auth_hash ?? "",
+	    }
+	}).then(response => this.logData(response.json()))
     }
 }
