@@ -1,14 +1,17 @@
 import { TailwindProvider, useTailwind } from 'tailwind-rn';
 import utilities from './tailwind.json';
-import { View, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+    NavigationContainer,
+    StackActions,
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Tavern App Imports
-import * as Authentication from './helpers/services/Authenticate';
-import * as TavernProfileService from './helpers/services/TavernProfileClient';
-import * as TavernProfileModels from './helpers/models';
-import React from 'react';
+import * as Authentication from './providers/receivers/Authenticate';
+import Login from './screens/unauth/Login';
+import Home from './screens/auth/Home';
+import FirstTime from './screens/unauth/FirstTime';
+import React, { useEffect } from 'react';
 // End Tavern App Imports
 
 function App() {
@@ -18,55 +21,45 @@ function App() {
         'flex items-center justify-center h-full w-full bg-slate-400'
     );
 
-    const setUpRender = (): JSX.Element => {
-        let isFirstTime = false;
-        let isLoggedIn = false;
+    const Stack = createNativeStackNavigator();
+    let startPoint = 'FirstTime';
 
-        Authentication.isFirstTime()
-            .then((result) => {
-                return result;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        Authentication.isLoggedIn()
-            .then((result) => {
-                return result;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
+    const whereStart = async (): Promise<string> => {
+        const isFirstTime = await Authentication.isFirstTime();
+        const isLoggedIn = await Authentication.isLoggedIn();
         if (isFirstTime) {
-            return (
-                <View style={viewStyle}>
-                    <Text style={tw('text-white text-2xl')}>
-                        First Time
-                    </Text>
-                </View>
-            );
+            return 'FirstTime';
         } else if (isLoggedIn) {
-            return (
-                <View style={viewStyle}>
-                    <Text style={tw('text-white text-2xl')}>
-                        Logged In
-                    </Text>
-                </View>
-            );
+            return 'Home';
         } else {
-            return (
-                <View style={viewStyle}>
-                    <Text style={tw('text-white text-2xl')}>
-                        Not Logged In
-                    </Text>
-                </View>
-            );
+            return 'Login';
         }
     };
 
+    useEffect(() => {
+        whereStart().then((res) => {
+            startPoint = res;
+        });
+    }, []);
+
     return (
         <TailwindProvider utilities={utilities}>
-            <NavigationContainer>{setUpRender()}</NavigationContainer>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName={startPoint}>
+                    <Stack.Screen
+                        name="Login"
+                        component={Login}
+                    />
+                    <Stack.Screen
+                        name="Home"
+                        component={Home}
+                    />
+                    <Stack.Screen
+                        name="FirstTime"
+                        component={FirstTime}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
         </TailwindProvider>
     );
 }

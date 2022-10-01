@@ -1,6 +1,8 @@
-import { IData } from './Enum';
+import TavernData from './TavernData';
 
-export default class DetailedResponse<T extends IData | IData[]> {
+export default class DetailedResponse<
+    T extends TavernData | TavernData[]
+> {
     data: T;
     successful: boolean;
     message: string;

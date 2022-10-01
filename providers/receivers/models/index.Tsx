@@ -1,4 +1,5 @@
 import DetailedResponse from './DetailedResponse';
+import TavernData from './TavernData';
 
 export {
     User,
@@ -26,5 +27,6 @@ export {
 } from './Requests';
 
 export default DetailedResponse;
+export { TavernData };
 
 export const EmptyGuid = '00000000000000000000000000000000';

@@ -1,18 +1,15 @@
-import {
-    IData,
-    Tag,
-    PlayerPreference,
-    Role,
-    Relationship,
-} from './Enum';
+import { Tag, PlayerPreference, Role, Relationship } from './Enum';
+import TavernData from './TavernData';
 
-export class Plot implements IData {
+export class Plot extends TavernData {
     id: string;
     plot_name: string;
     plot: string;
     user_id: string;
 
     constructor(data: undefined | any = {}) {
+        super({ id: data.id, name: data.plot_name });
+
         this.id = data.id ?? '00000000000000000000000000000000';
         this.plot_name = data.plot_name ?? 'NO PLOT NAME';
         this.plot = data.plot ?? 'NO PLOT';
@@ -21,7 +18,7 @@ export class Plot implements IData {
     }
 }
 
-export class Character implements IData {
+export class Character extends TavernData {
     id: string;
     character_name: string;
     backstory: string;
@@ -39,6 +36,7 @@ export class Character implements IData {
     user_id: string;
 
     constructor(data: undefined | any = {}) {
+        super({ id: data.id, name: data.character_name });
         this.id = data.id ?? '00000000000000000000000000000000';
         this.character_name =
             data.character_name ?? 'NO CHARACTER NAME';
@@ -59,7 +57,7 @@ export class Character implements IData {
     }
 }
 
-export class User implements IData {
+export class User extends TavernData {
     id: string;
     username: string;
     bio: string;
@@ -69,6 +67,7 @@ export class User implements IData {
     user_player_preferences: PlayerPreference;
 
     constructor(data: undefined | any = {}) {
+        super({ id: data.id, name: data.username });
         this.id = data.id ?? '00000000000000000000000000000000';
         this.username = data.username ?? 'NO USERNAME';
         this.bio = data.bio ?? 'NO BIO';
@@ -80,7 +79,7 @@ export class User implements IData {
     }
 }
 
-export class AuthToken implements IData {
+export class AuthToken extends TavernData {
     id: string;
     user_id: string;
     username: string;
@@ -91,6 +90,7 @@ export class AuthToken implements IData {
     role: Role;
 
     constructor(data: undefined | any = {}) {
+        super({ id: data.id, name: data.username });
         this.id = data.id ?? '00000000000000000000000000000000';
         this.user_id =
             data.user_id ?? '00000000000000000000000000000000';
@@ -104,7 +104,7 @@ export class AuthToken implements IData {
     }
 }
 
-export class UserRelationship implements IData {
+export class UserRelationship extends TavernData {
     id: string;
     self_id: string;
     other_id: string;
@@ -112,6 +112,7 @@ export class UserRelationship implements IData {
     relationship: Relationship;
 
     constructor(data: undefined | any = {}) {
+        super({ id: data.id, name: data.relationship.name });
         this.id = data.id ?? '00000000000000000000000000000000';
         this.self_id =
             data.self_id ?? '00000000000000000000000000000000';
