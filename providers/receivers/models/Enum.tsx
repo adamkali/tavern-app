@@ -14,11 +14,16 @@ export class Tag extends TavernData {
 export class PlayerPreference extends TavernData {
     id: string;
     pref_name: string;
+    game: string;
+    experience: string;
+
 
     constructor(data: undefined | any = {}) {
         super({ id: data.id, name: data.pref_name });
         this.id = data.id ?? '00000000000000000000000000000000';
         this.pref_name = data.pref_name ?? 'NO PREFERENCE NAME';
+        this.game = data.game ?? "Paint Drying",
+        this.experience= data.experience ?? "No Cares Given."
     }
 }
 

@@ -1,7 +1,6 @@
 import { LightColors, DarkColors } from './Colors';
 
 export default class TavernColor {
-    isDark: boolean;
     foreground: {
         primary: string;
         secondary: string;
@@ -12,15 +11,10 @@ export default class TavernColor {
         accent: string;
         dark: string;
     };
-    constructor(isDark: boolean) {
-        this.isDark = isDark;
-        if (isDark) {
-            this.foreground = DarkColors.foreground;
-            this.background = DarkColors.background;
-        } else {
-            this.foreground = LightColors.foreground;
-            this.background = LightColors.background;
-        }
+    constructor(json: undefined | any = {}) {
+        // using switch for more themes in the future
+        this.foreground = json.foreground;
+        this.background = json.background;
     }
 
     getForeground(): {
@@ -39,14 +33,4 @@ export default class TavernColor {
         return this.background;
     }
 
-    setDark() {
-        this.isDark = !this.isDark;
-        if (this.isDark) {
-            this.foreground = DarkColors.foreground;
-            this.background = DarkColors.background;
-        } else {
-            this.foreground = LightColors.foreground;
-            this.background = LightColors.background;
-        }
-    }
 }

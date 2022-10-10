@@ -1,3 +1,4 @@
+import { TavernModels } from '..';
 import { Tag, PlayerPreference, Role, Relationship } from './Enum';
 import TavernData from './TavernData';
 
@@ -64,7 +65,8 @@ export class User extends TavernData {
     user_plots: Plot[];
     user_characters: Character[];
     user_tags: Tag[];
-    user_player_preferences: PlayerPreference;
+    pref_fk: string
+    user_player_preference: PlayerPreference;
 
     constructor(data: undefined | any = {}) {
         super({ id: data.id, name: data.username });
@@ -74,14 +76,15 @@ export class User extends TavernData {
         this.user_plots = data.user_plots ?? [];
         this.user_characters = data.user_characters ?? [];
         this.user_tags = data.user_tags ?? [];
-        this.user_player_preferences =
+        this.pref_fk = data.pref_fk ?? TavernModels.EmptyGuid
+        this.user_player_preference =
             data.user_player_preferences ?? new PlayerPreference();
     }
 }
 
 export class AuthToken extends TavernData {
     id: string;
-    user_id: string;
+    user_fk: string;
     username: string;
     user_email: string;
     auth_hash: string;
@@ -92,8 +95,8 @@ export class AuthToken extends TavernData {
     constructor(data: undefined | any = {}) {
         super({ id: data.id, name: data.username });
         this.id = data.id ?? '00000000000000000000000000000000';
-        this.user_id =
-            data.user_id ?? '00000000000000000000000000000000';
+        this.user_fk =
+            data.user_fk ?? '00000000000000000000000000000000';
         this.username = data.username ?? 'NO USERNAME';
         this.user_email = data.user_email ?? 'NO EMAIL';
         this.auth_hash = data.auth_hash ?? 'NO AUTH HASH';
