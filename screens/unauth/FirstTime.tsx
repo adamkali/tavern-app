@@ -1,6 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 
+// ====================================
+
+impo
+
 export default function FirstTime() {
     return (
         <View style={styles.container}>
