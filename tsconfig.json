@@ -1,20 +1,20 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true
-  },
-  "include": [
-    "./helpers/**/*",
-    "./providers/**/*",
-    "./screens/**/*",
-    "./components/**/*",
-  ],
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js",
-    "tsconfig.json",
-    "tsconfig.base.json"
-  ]
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true
+    },
+    "include": [
+        "./helpers/**/*",
+        "./providers/**/*",
+        "./screens/**/*",
+        "./components/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "babel.config.js",
+        "metro.config.js",
+        "jest.config.js",
+        "tsconfig.json",
+        "tsconfig.base.json"
+    ]
 }

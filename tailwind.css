@@ -1,176 +1,176 @@
 .absolute {
-  position: absolute
+    position: absolute;
 }
 
 .relative {
-  position: relative
+    position: relative;
 }
 
 .inset-x-0 {
-  left: 0px;
-  right: 0px
+    left: 0px;
+    right: 0px;
 }
 
 .bottom-0 {
-  bottom: 0px
+    bottom: 0px;
 }
 
 .left-0 {
-  left: 0px
+    left: 0px;
 }
 
 .right-0 {
-  right: 0px
+    right: 0px;
 }
 
 .z-10 {
-  z-index: 10
+    z-index: 10;
 }
 
 .mx-auto {
-  margin-left: auto;
-  margin-right: auto
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .my-auto {
-  margin-top: auto;
-  margin-bottom: auto
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .mb-2 {
-  margin-bottom: 0.5rem
+    margin-bottom: 0.5rem;
 }
 
 .ml-2 {
-  margin-left: 0.5rem
+    margin-left: 0.5rem;
 }
 
 .mr-2 {
-  margin-right: 0.5rem
+    margin-right: 0.5rem;
 }
 
 .flex {
-  display: flex
+    display: flex;
 }
 
 .h-full {
-  height: 100%
+    height: 100%;
 }
 
 .h-header {
-  height: 12.5%
+    height: 12.5%;
 }
 
 .h-10 {
-  height: 2.5rem
+    height: 2.5rem;
 }
 
 .h-4\/5 {
-  height: 80%
+    height: 80%;
 }
 
 .w-full {
-  width: 100%
+    width: 100%;
 }
 
 .w-10 {
-  width: 2.5rem
+    width: 2.5rem;
 }
 
 .w-80 {
-  width: 20rem
+    width: 20rem;
 }
 
 .flex-row {
-  flex-direction: row
+    flex-direction: row;
 }
 
 .flex-col {
-  flex-direction: column
+    flex-direction: column;
 }
 
 .items-center {
-  align-items: center
+    align-items: center;
 }
 
 .justify-center {
-  justify-content: center
+    justify-content: center;
 }
 
 .rounded-header {
-  border-radius: 1.5rem 1.5rem 0 0
+    border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .rounded-2xl {
-  border-radius: 2rem
+    border-radius: 2rem;
 }
 
 .rounded-full {
-  border-radius: 9999px
+    border-radius: 9999px;
 }
 
 .rounded-xl {
-  border-radius: 1.5rem
+    border-radius: 1.5rem;
 }
 
 .bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity))
+    --tw-bg-opacity: 1;
+    background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-slate-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity))
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .bg-yellow-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity))
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 240 138 / var(--tw-bg-opacity));
 }
 
 .p-5 {
-  padding: 1.25rem
+    padding: 1.25rem;
 }
 
 .py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .pt-6 {
-  padding-top: 1.5rem
+    padding-top: 1.5rem;
 }
 
 .text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem
+    font-size: 1.875rem;
+    line-height: 2.25rem;
 }
 
 .text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
 .text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 .font-bold {
-  font-weight: 700
+    font-weight: 700;
 }
 
 .text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity))
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity))
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .text-slate-600 {
-  --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity))
+    --tw-text-opacity: 1;
+    color: rgb(71 85 105 / var(--tw-text-opacity));
 }

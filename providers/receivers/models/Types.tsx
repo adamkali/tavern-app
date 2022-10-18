@@ -65,7 +65,7 @@ export class User extends TavernData {
     user_plots: Plot[];
     user_characters: Character[];
     user_tags: Tag[];
-    pref_fk: string
+    pref_fk: string;
     user_player_preference: PlayerPreference;
 
     constructor(data: undefined | any = {}) {
@@ -76,7 +76,7 @@ export class User extends TavernData {
         this.user_plots = data.user_plots ?? [];
         this.user_characters = data.user_characters ?? [];
         this.user_tags = data.user_tags ?? [];
-        this.pref_fk = data.pref_fk ?? TavernModels.EmptyGuid
+        this.pref_fk = data.pref_fk ?? TavernModels.EmptyGuid;
         this.user_player_preference =
             data.user_player_preferences ?? new PlayerPreference();
     }

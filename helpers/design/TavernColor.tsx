@@ -32,5 +32,4 @@ export default class TavernColor {
     } {
         return this.background;
     }
-
 }
