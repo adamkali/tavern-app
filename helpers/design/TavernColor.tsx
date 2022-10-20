@@ -1,6 +1,7 @@
 import { LightColors, DarkColors } from './Colors';
 
 export default class TavernColor {
+    name: string = 'TavernColor';
     foreground: {
         primary: string;
         secondary: string;
@@ -13,6 +14,7 @@ export default class TavernColor {
     };
     constructor(json: undefined | any = {}) {
         // using switch for more themes in the future
+        this.name = json.name || 'TavernColor';
         this.foreground = json.foreground;
         this.background = json.background;
     }

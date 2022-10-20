@@ -29,18 +29,23 @@ export async function useTavernColor(): Promise<TavernColor> {
 }
 
 export async function useColorScheme(
-    scheme: string
+    scheme: string,
+    callback?: (color: Promise<TavernColor>) => Promise<TavernColor>
 ): Promise<TavernColor> {
     const [color, setColor] = useState({} as TavernColor);
 
-    // FIX ME THIS IS QUICK AND DIRTY 😰
-    ColorNames.forEach((c) => {
-        setColor(
-            c.name === scheme
-                ? (c.scheme as TavernColor)
-                : (LightColors as TavernColor)
-        );
-    });
+    const colorScheme =
+        ColorNames.filter((i) => i.name === scheme)[0] || LightColors;
 
-    return color;
+    // if ther is a callback, should work out of the box with useTavernColor
+    if (callback) {
+        callback(
+            new Promise((resolve) => {
+                return resolve(new TavernColor(colorScheme));
+            })
+        );
+    }
+    return await new Promise((resolve) => {
+        resolve(new TavernColor(colorScheme));
+    });
 }

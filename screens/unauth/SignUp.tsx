@@ -4,4 +4,14 @@
 // There should be a state variable with a type of AuthRequest
 //    from TavernModels from the providers/recievers folder
 // When the submit button is pressed, then use the Register function
+import React, { useState } from 'react';
+import { View, TextInput, Button } from 'react-native';
+import { TavernText as Text } from '../../components';
 
+export default async function SignUp(): Promise<JSX.Element> {
+    return (
+        <View>
+            <Text>Sign Up</Text>
+        </View>
+    );
+}
