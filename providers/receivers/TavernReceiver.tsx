@@ -26,12 +26,12 @@ export default class TavernClient<T extends TavernData> {
     async get(
         url: string,
         params: { id: string; headers: AxiosRequestHeaders }
-    ): Promise<T> {
-        const response = await axios.get<Providable<T>>(
+    ): Promise<Providable<T>> {
+        const response = await axios.get<DetailedResponse<T>>(
             this.baseUrl + url + '/' + params.id,
             { headers: params.headers }
         );
-        return response.data.provide();
+        return new Providable<T>(response.data);
     }
 
     // post function
@@ -41,13 +41,13 @@ export default class TavernClient<T extends TavernData> {
     async post(
         url: string,
         params: { body: Object; headers: AxiosRequestHeaders }
-    ): Promise<T> {
-        const response = await axios.post<Providable<T>>(
+    ): Promise<Providable<T>> {
+        const response = await axios.post<DetailedResponse<T>>(
             this.baseUrl + url,
             params.body,
             { headers: params.headers }
         );
-        return response.data.provide();
+        return new Providable<T>(response.data);
     }
 
     // delete function
@@ -57,11 +57,11 @@ export default class TavernClient<T extends TavernData> {
     async delete(
         url: string,
         params: { id: string; headers: AxiosRequestHeaders }
-    ): Promise<T> {
-        const response = await axios.delete<Providable<T>>(
+    ): Promise<Providable<T>> {
+        const response = await axios.delete<DetailedResponse<T>>(
             this.baseUrl + url + '/' + params.id,
             { headers: params.headers }
         );
-        return response.data.provide();
+        return new Providable<T>(response.data);
     }
 }

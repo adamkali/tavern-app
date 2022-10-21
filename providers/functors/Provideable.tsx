@@ -9,18 +9,16 @@ export default class Providable<T extends TavernData | TavernData[]> {
     private value: DetailedResponse<T>;
     // Whether the option has a value
     private hasValue: boolean;
+    private errorValue: string | null;
 
     constructor(value: DetailedResponse<T>) {
         this.value = value;
         if (value.successful) {
-            this.value = value;
             this.hasValue = true;
+            this.errorValue = null;
         } else {
-            this.value =
-                value.data === null && value.data === undefined
-                    ? value
-                    : new DetailedResponse<T>();
             this.hasValue = false;
+            this.errorValue = value.message;
         }
     }
 
@@ -30,16 +28,29 @@ export default class Providable<T extends TavernData | TavernData[]> {
         if (this.hasValue) {
             return this.value.data;
         } else {
-            throw new Error(this.value.message);
+            return {} as T;
         }
     }
 
-    forceProvide(): Providable<T> {
+    check(): boolean {
+        return this.errorValue === null;
+    }
+
+    // make a method to that makes a run function
+    // for the monad
+    run(func: (_: T) => any): Providable<T> {
         if (this.hasValue) {
+            func(this.value.data);
             return this;
         } else {
-            throw new Error(this.value.message);
+            this.errorValue =
+                'An error occurred, durring the run function';
+            return this;
         }
+    }
+
+    error(): string | null {
+        return this.errorValue;
     }
 
     search(id: string): TavernData {

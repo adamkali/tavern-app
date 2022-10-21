@@ -1,12 +1,20 @@
-import { DarkColors, LightColors } from './Colors';
+import * as TavernColors from './Colors';
 
 export default [
     {
         name: 'dark',
-        scheme: DarkColors,
+        scheme: TavernColors.DarkColors,
     },
     {
         name: 'light',
-        scheme: LightColors,
+        scheme: TavernColors.LightColors,
     },
+    {
+	name: 'vaporwave',
+	scheme: TavernColors.VaporwaveColors,
+    },
+    {
+        name: 'hellopuppy',
+	scheme: TavernColors.HelloKittyColors,
+	    },
 ] as const;

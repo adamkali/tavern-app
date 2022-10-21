@@ -1,6 +1,6 @@
 // Create a module that exports all the components
-import LooseText from './Text/LooseText';
 import TavernText from './Text/TavernText';
 import TButton from './Text/TButton';
+import TavernInput from './Text/TavernInput';
 
-export { LooseText, TButton, TavernText };
+export { TButton, TavernText, TavernInput };

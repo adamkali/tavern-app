@@ -18,7 +18,7 @@ export default function TavernInput(props: any): JSX.Element {
     });
 
     return (
-        <View>
+        <View style={styles.inputBackground}>
             <View style={styles.labelView}>
                 <Text style={styles.label}>{props.label}</Text>
             </View>

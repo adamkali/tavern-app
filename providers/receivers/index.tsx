@@ -1,5 +1,18 @@
-import TavernProfile from './clients';
+import * as TavernProfile from './clients';
+import {
+    TavernData,
+    TavernTypes,
+    TavernEnums,
+    TavernRequests,
+    EmptyGuid,
+} from './models';
 
-export * as TavernModels from './models';
-// export TavernProfile;
+export const TavernModels = {
+    TavernData,
+    TavernTypes,
+    TavernEnums,
+    TavernRequests,
+    EmptyGuid,
+};
+
 export default TavernProfile;

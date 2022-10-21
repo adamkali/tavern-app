@@ -1,37 +1,49 @@
 import axios, { AxiosRequestHeaders } from 'axios';
 import Providable from '../../functors/Provideable';
 import { constructHeader } from '../Authenticate';
-import { AuthRequest, AuthToken, LoginRequest } from '../models';
+import { TavernTypes, TavernRequests } from '../models';
 import TavernClient from '../TavernReceiver';
+import DetailedResponse from '../models';
 
-export default class UserClient extends TavernClient<AuthToken> {
+type AuthToken = TavernTypes.AuthToken;
+type AuthRequest = TavernRequests.AuthRequest;
+type LoginRequest = TavernRequests.LoginRequest;
+type VerifyRequest = TavernRequests.VerifyRequest;
+
+export default class AuthClient extends TavernClient<AuthToken> {
     headers: AxiosRequestHeaders = { Authentication: '' };
 
     constructor() {
-        super('', new AuthToken());
+        super('', {} as AuthToken);
     }
 
-    async Login(p: { body: LoginRequest }): Promise<AuthToken> {
-        const response = await axios.post<Providable<AuthToken>>(
-            this.baseUrl + '/login',
-            p.body
+    async Login(params: {
+        body: LoginRequest;
+    }): Promise<Providable<AuthToken>> {
+        const response = await axios.post<DetailedResponse<AuthToken>>(
+            this.baseUrl + 'login',
+            params.body
         );
-        return response.data.provide();
+        return new Providable<AuthToken>(response.data);
     }
 
-    async Register(p: { body: AuthRequest }): Promise<AuthToken> {
-        const response = await axios.post<Providable<AuthToken>>(
-            this.baseUrl + '/signup',
-            p.body
+    async Register(params: {
+        body: AuthRequest;
+    }): Promise<Providable<AuthToken>> {
+        const response = await axios.post<DetailedResponse<AuthToken>>(
+            this.baseUrl + 'register',
+            params.body
         );
-        return response.data.provide();
+        return new Providable<AuthToken>(response.data);
     }
 
-    async Verify(p: { body: AuthRequest }): Promise<AuthToken> {
-        const response = await axios.post<Providable<AuthToken>>(
-            this.baseUrl + '/verify',
-            p.body
+    async Verify(params: {
+        body: VerifyRequest;
+    }): Promise<Providable<AuthToken>> {
+        const response = await axios.post<DetailedResponse<AuthToken>>(
+            this.baseUrl + 'verify',
+            params.body
         );
-        return response.data.provide();
+        return new Providable<AuthToken>(response.data);
     }
 }

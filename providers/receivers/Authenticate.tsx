@@ -1,15 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as TavernProfileModels from './models';
+import { TavernTypes } from './models';
+
+type AuthToken = TavernTypes.AuthToken;
+
 
 // make a isLogged in function to check if the AuthToken is in the storage
 // the token's key is "UserToken"
 export const isLoggedIn = async (): Promise<boolean> => {
     return new Promise(async (resolve, reject) => {
         // Get the token from AsyncStorage as TavernProfileModels.AuthToken
-        let res: TavernProfileModels.AuthToken;
+        let res: AuthToken;
         const token = await AsyncStorage.getItem('UserToken');
         if (token !== null || token !== undefined) {
-            res = new TavernProfileModels.AuthToken(token);
+            res = {} as AuthToken;
             if (res.active) {
                 resolve(true);
             } else {
@@ -22,7 +25,7 @@ export const isLoggedIn = async (): Promise<boolean> => {
 // make a function that stores an AuthToken into the AsyncStorage
 // the Token's key is "UserToken"
 export const storeToken = async (
-    token: TavernProfileModels.AuthToken
+    token: AuthToken
 ): Promise<void> => {
     return new Promise((resolve, reject) => {
         // Store the token in AsyncStorage
@@ -42,7 +45,7 @@ export const constructHeader = async (): Promise<string> => {
         const token = await AsyncStorage.getItem('UserToken');
         if (token !== null || token !== undefined) {
             // make a new AuthToken
-            const authToken = new TavernProfileModels.AuthToken(token);
+            const authToken = {} as AuthToken;
             header = 'Bearer ' + authToken.auth_hash;
             resolve(header);
         } else reject('Could not load AsyncStorage');

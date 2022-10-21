@@ -7,20 +7,14 @@ import React from 'react';
 import TavernProfile, { TavernModels } from '../../providers/receivers';
 import { useTavernColor } from '../../helpers/hooks/useTavernColor';
 import TavernColor from '../../helpers/design/TavernColor';
-import { LooseText, TButton } from '../../components';
+import { TButton } from '../../components';
 import * as Authenticate from '../../providers/receivers/Authenticate';
-import { navigate } from '@react-navigation/routers/lib/typescript/src/CommonActions';
+import { LightColors } from '../../helpers/design/Colors';
 
-let Color: TavernColor = new TavernColor();
+let Color: TavernColor = new TavernColor(LightColors);
 
-export default function FirstTime() {
+export default function FirstTime({ navigation }: any): JSX.Element {
     useTavernColor().then((c) => (Color = c));
-
-    const onSignUpPress = () => {
-        // Use React Navigation to navigate to the SignUp screen
-        Authenticate.setFirstTime();
-        navigate('SignUp');
-    };
 
     return (
         <View style={styles.container}>
@@ -47,12 +41,13 @@ export default function FirstTime() {
                 </ScrollView>
             </View>
             <View style={styles.buttonContainer}>
-                {/**
-                 * Make a button that takes the user to the next screen
-                 */}
                 <TButton
                     value="Sign Me Up!"
-                    onPress={() => Authenticate.setFirstTime()}
+                    onPress={() => {
+                        Authenticate.setFirstTime();
+			console.log("First Time");
+                        navigation.navigate('SignUp');
+                    }}
                 />
             </View>
         </View>
@@ -67,11 +62,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        color: Color.foreground.primary,
+        color: Color.foreground.secondary,
         fontSize: 30,
+	marginTop: 10,
     },
     title: {
-        color: Color.foreground.primary,
+        color: Color.foreground.secondary,
         fontSize: 50,
     },
     textContainer: {
@@ -80,7 +76,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textScroll: {
-        width: '100%',
+        width: '80%',
+	backgroundColor: Color.background.dark,
+	borderRadius: 10,
     },
     buttonContainer: {
         flex: 1,

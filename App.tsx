@@ -9,8 +9,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Tavern App Imports
 import * as Authentication from './providers/receivers/Authenticate';
 import Login from './screens/unauth/Login';
-import Home from './screens/auth/Home';
+import Home from './screens/auth/home';
 import FirstTime from './screens/unauth/FirstTime';
+import SignUp from './screens/unauth/SignUp';
 import React, { useEffect } from 'react';
 // End Tavern App Imports
 
@@ -57,6 +58,10 @@ function App() {
                     <Stack.Screen
                         name="FirstTime"
                         component={FirstTime}
+                    />
+                    <Stack.Screen
+                        name="SignUp"
+                        component={SignUp}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
