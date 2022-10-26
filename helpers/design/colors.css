@@ -1,0 +1,44 @@
+royal: {
+    light_foreground_primary: "#6B5600",
+    light_foreground_secondary: "#B79300",
+    light_foreground_tertiary: "#B77500",
+    light_background_normal: "#FFD21A",
+    light_background_accent: "#FFF81A",
+    light_background_dark: "#FFAC1A",
+}
+
+blue: {
+    dark_foreground_primary: "#9695A0",
+    dark_foreground_secondary: "#0B0091",
+    dark_foreground_tertiary: "#0B0277",
+    dark_background_normal: "#3E369D",
+    dark_background_accent: "#54309A",
+    dark_background_dark: "#304F97",
+}
+
+vaporwave: {
+    light_foreground_primary: "#aefdf2",
+    light_foreground_secondary: "#5159ff",
+    light_foreground_tertiary: "#FF00FF",
+    light_background_normal: "#001e8c",
+    light_background_accent: "#5204b0",
+    light_background_dark: "#0b031e",
+}
+
+light: {
+    light_foreground_primary: "#353535",
+    light_foreground_secondary: "#83827D",
+    light_foreground_tertiary: "#000000",
+    light_background_normal: "#FFFEEF",
+    light_background_accent: "#F9FFDD",
+    light_background_dark: "#FFFCCC",
+}
+
+fruit: {
+    light_foreground_primary: "#FF0000",
+    light_foreground_secondary: "#6CEE00",
+    light_foreground_tertiary: "#00CD75",
+    light_background_normal: "#6C0000",
+    light_background_accent: "#2B6000",
+    light_background_dark: "#004A2A",
+}

@@ -2,7 +2,16 @@
     "extends": "expo/tsconfig.base",
     "compilerOptions": {
         "jsx": "react",
-        "strict": true
+        "strict": true,
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "customMatcher": "\\.module\\.css$",
+                    "camelCase": true
+                },
+            }
+        ]
     },
     "include": [
         "./helpers/**/*",
